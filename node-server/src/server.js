@@ -13,8 +13,8 @@ GET http://localhost:8080/profile
 
 Replace ... with the correct path
 */
-app.get("...", (req, res) => {
-
+app.get("/profiles", (req, res) => {
+  response.writeHeader(200, { "Content-Type": "application/json" })
 });
 
   /*
