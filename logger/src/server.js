@@ -1,9 +1,13 @@
+//  import log from "logger.js";
+const logger = require("./logger.js");
 const express = require("express");
 const app = express();
 const currentYear = new Date().getFullYear();
+const date = new Date();
 
 app.get("/", (req, res) => {
-  res.send("Morning");
+ res.send("Morning");
+ 
 });
 
 app.patch("/greet", (req, res) => {
@@ -23,5 +27,7 @@ app.get('/date/:year-:month-:day', function(req, res, next){
   }
 });
 
+
 app.listen(8080, function() {
 });
+
