@@ -15,20 +15,32 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.raw());
 
+
 //GET /
 app.get("/", (req, res) => {
   res.sendFile("./public/index.html", { root: __dirname });
 });
 
 //GET /api/profiles
-app.get('/api/profiles', (_, res) => {
-   // res.sendFile("./models/profiles.json", { root: __dirname });
-    res.status(errorStatus).send('Not implemented');
+
+app.get('/api/profiles', (req, res) => {
+     res.sendFile("./models/profiles.json", { root: __dirname });
+    // const profiles = JSON.parse(fs.readFileSync(file));
+    const id = Number.parseInt(req.params.id);
+    // // res.status(errorStatus).send('Not implemented');
+    // // log(req.method)
+    // console.log(__dirname);
 });
+
+
 
 //GET /api/profiles/:id
 app.get('/api/profiles/:id', (req, res) => {
-    res.status(errorStatus).send('Not implemented');
+    console.log('Api:', res.locals)
+    const file = "./src/models/profiles.json";
+    const id = req.params.id;
+    const profiles = JSON.parse(fs.readFileSync(file));
+    // res.status(errorStatus).send('Not implemented');
 });
 
 //POST /api/profiles
